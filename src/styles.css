@@ -1,0 +1,43 @@
+:host {
+  --mt-black: 23, 35, 34;
+  --mt-white: 253, 244, 255;
+  --mt-blue: 0, 171, 245;
+
+  --media-icon-color: rgb(var(--mt-white));
+
+  color: rgb(var(--mt-white));
+  fill: rgb(var(--mt-white));
+  display: inline-block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+svg[slot] {
+  height: 24px; /* TODO: caused by no fixed height set in Media Chrome */
+}
+
+/* Add some Tailwind like utility classes for responsiveness. */
+
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.xs .xs\:hidden,
+.sm .sm\:hidden {
+  display: none;
+}
+
+.xs .xs\:block,
+.sm .sm\:block {
+  display: block;
+}
+
+media-airplay-button[media-airplay-unavailable],
+media-volume-range[media-volume-unavailable],
+media-pip-button[media-pip-unavailable] {
+  display: none;
+}
