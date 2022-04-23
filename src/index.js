@@ -1,7 +1,7 @@
 import htmlStr from './template.html';
 import styles from './styles.css';
 import symbols from './icons/*.svg';
-import { MediaTheme } from 'media-chrome';
+import { MediaTheme } from '/node_modules/media-chrome/dist/index.js';
 import { getBreakpoints, render, unsafeHTML } from './helpers.js';
 
 const breakpoints = { xs: 396, sm: 484, md: 576, lg: 768, xl: 960 };
