@@ -1,7 +1,7 @@
 import htmlStr from './template.html';
 import styles from './styles.css';
 import symbols from './icons/*.svg';
-import MediaTheme from './media-theme.js';
+import { MediaTheme } from 'media-chrome';
 import { getBreakpoints, render, unsafeHTML } from './helpers.js';
 
 const breakpoints = { xs: 396, sm: 484, md: 576, lg: 768, xl: 960 };
@@ -10,12 +10,7 @@ class MediaThemeJumpStart extends MediaTheme {
   constructor() {
     super();
 
-    this.attachShadow({ mode: 'open' });
     resizeObserver.observe(this);
-  }
-
-  connectedCallback() {
-    this.render();
   }
 
   render() {

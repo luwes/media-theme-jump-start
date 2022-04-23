@@ -5,7 +5,7 @@ import { fromRollup } from '@web/dev-server-rollup';
 import { dirImportPlugin, importAsTextPlugin } from './rollup.config.js';
 
 const myElementPatch = `
-import MediaTheme from '/src/media-theme.js';
+import { MediaTheme } from 'media-chrome';
 MediaTheme.prototype.hotReplacedCallback = function hotReplacedCallback() {
   console.log('Hot cakes incoming!');
   this.render();
@@ -20,12 +20,6 @@ export default {
     // serve all src files as js
     'src/**/*': 'js',
   },
-  middleware: [
-    function rewriteDist(context, next) {
-      context.url = context.url.replace(/^\/dist\//, '/src/');
-      return next();
-    },
-  ],
   plugins: [
     helperPlugin(),
     fromRollup(dirImportPlugin)(),
@@ -42,8 +36,8 @@ export default {
       },
     }),
     hmrPlugin({
-      include: ['**/*'],
-      baseClasses: [{ name: 'MediaTheme', import: '/src/media-theme.js' }],
+      exclude: ['**/*/node_modules/**/*'],
+      baseClasses: [{ name: 'MediaTheme', import: 'media-chrome' }],
       patches: [myElementPatch],
     }),
   ],
